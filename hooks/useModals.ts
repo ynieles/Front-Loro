@@ -1,0 +1,21 @@
+import { useState } from "react";
+
+export const useModals = () => {
+  const [modals, setModals] = useState({
+    register: false,
+    delete: false,
+    edit: false,
+    details: false,
+    restore: false,
+    password: false,
+  });
+
+  const toggleModal = (type: keyof typeof modals, state: boolean) => {
+    setModals((prev) => ({
+      ...prev,
+      [type]: state,
+    }));
+  };
+
+  return { modals, toggleModal };
+};
